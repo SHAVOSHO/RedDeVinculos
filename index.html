@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Red de Vínculos</title>
+<!-- Font Awesome Free 6.5 -->
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+integrity="sha512-Avb2QiuDEEvB4bZJYdft2mNjVShBftLdPG8FJ0V7irTLQ8Uo0qcPxh4Plq7G5tGm0rU+1SPhVotteLpBERwTkw=="
+crossorigin="anonymous"
+referrerpolicy="no-referrer">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- Pestaña toggle (independiente) -->
+<button id="sidebarToggle">
+  <i class="fas fa-chevron-right"></i>
+</button>
+
+<!-- Barra lateral con controles -->
+<div id="sidebar">
+  <div id="sidebarContent">
+    <h3><i class="fas fa-tools"></i> Herramientas</h3>
+    
+    <button id="addBtn" class="sidebar-btn">
+      <i class="fas fa-plus"></i>
+      Agregar
+    </button>
+    
+    <select id="saveSelect" class="sidebar-select">
+      <option value="" disabled selected>Guardar como…</option>
+      <option value="json">JSON</option>
+      <option value="pdf">PDF</option>
+    </select>
+    
+    <button id="loadBtn" class="sidebar-btn">
+      <i class="fas fa-folder-open"></i>
+      Cargar
+    </button>
+    
+    <button id="clearBtn" class="sidebar-btn">
+      <i class="fas fa-trash"></i>
+      Limpiar
+    </button>
+    
+    <button id="groupRelationBtn" class="sidebar-btn">
+      <i class="fas fa-link"></i>
+      Relacionar grupos
+    </button>
+    
+    <button id="groupMoveBtn" class="sidebar-btn">
+      <i class="fas fa-arrows-alt"></i>
+      Mover grupo
+    </button>
+    
+    <button id="groupBoxBtn" class="sidebar-btn">
+      <i class="fas fa-object-group"></i>
+      Agrupar
+    </button>
+  </div>
+</div>
+
+<!-- Controles superiores (mantener ocultos con CSS) -->
+<div id="controls-top">
+<button id="addBtn" class="btn">Agregar</button>
+<select id="saveSelect" class="btn">
+<option value="" disabled selected>Guardar como…</option>
+<option value="json">JSON</option>
+<option value="pdf">PDF</option>
+</select>
+<button id="loadBtn" class="btn">Cargar</button>
+<button id="clearBtn" class="btn">Limpiar</button>
+<button id="groupRelationBtn" class="btn">Relacionar grupos</button>
+<button id="groupMoveBtn" class="btn">Mover grupo</button>
+<button id="groupBoxBtn" class="btn">Agrupar</button>
+</div>
+
+<div id="grid">
+<svg id="relationLayer"></svg>
+<div id="selectionBox"></div>
+</div>
+
+<!-- Menú contextual "Relacionar" -->
+<div id="relationMenu" class="relation-menu hidden">
+<button id="startRelationBtn" class="btn">Relacionar</button>
+<button id="addDataBtn" class="btn">Agregar datos</button>
+<button id="deleteIconBtn" class="btn">Eliminar ícono</button>
+</div>
+
+<!-- Controles inferiores (vertical) -->
+<div id="controls-bottom">
+<button id="zoomInBtn" class="btn">+</button>
+<button id="zoomOutBtn" class="btn">−</button>
+<button id="centerBtn" class="btn">Centrar</button>
+</div>
+
+<!-- Modal de selección de iconos -->
+<div id="iconModal" class="modal hidden">
+<div class="modal-dialog">
+<div class="modal-header">
+<input type="search" id="iconSearch" placeholder="Buscar iconos…" class="icon-search">
+<select id="iconFilter" class="icon-filter">
+<option value="">Todas las categorías</option>
+<option value="nodo">Nodos</option>
+<option value="arista">Aristas</option>
+</select>
+<button id="iconClose" class="btn-close">&times;</button>
+</div>
+<div class="modal-body" id="iconContainer">
+<!-- inyectado dinámicamente por app.js -->
+</div>
+</div>
+</div>
+
+<!-- Modal de ayuda -->
+<div id="helpModal" class="modal hidden">
+<div class="modal-dialog">
+<div class="modal-header">…</div>
+<div class="modal-body help-body">
+ …tu lista de ayuda…
+</div>
+</div>
+</div>
+
+<!-- Menú contextual "Eliminar/estilos relación" -->
+<div id="lineMenu" class="relation-menu hidden">
+<button id="deleteRelationBtn" class="btn">Eliminar relación</button>
+<button id="solidRelationBtn" class="btn">Línea sólida</button>
+<button id="dottedRelationBtn" class="btn">Línea punteada</button>
+<button id="dashedRelationBtn" class="btn">Línea segmentada</button>
+<button id="colorRelationBtn" class="btn">Color</button>
+</div>
+
+<!-- Scripts -->
+<script src="sidebar.js"></script>
+<script src="app.js"></script>
+<script src="drag.js"></script>
+<script src="relations.js"></script>
+<script src="iconData.js"></script>
+<script src="help.js"></script>
+<script src="selection.js"></script>
+<script src="group.js"></script>
+<script src="save.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.1/jspdf.plugin.autotable.min.js"></script>
+<script src="pdf.js"></script>
+
+<script src="load.js"></script>
+<script src="clear.js"></script>
+<script src="symbology.js"></script>
+
+<!-- <script src="zoom.js"></script> -->
+
+</body>
+</html>
